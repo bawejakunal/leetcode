@@ -1,5 +1,7 @@
 '''
     Find longest commong prefix
+    Better than previous commit
+    https://leetcode.com/problems/longest-common-prefix/
 '''
 
 class Solution(object):
@@ -13,16 +15,9 @@ class Solution(object):
             smallest = min(strs)
         except ValueError:
             return ''
-        
-        found = False
-        while found is False:
-            found = True
-            # check if prefix of each string
-            for string in strs:
-                if not string.startswith(smallest):
-                    found = False
-                    # reduce size of smallest string
-                    smallest = smallest[:-1]
-                    break
-        
+
+        for string in strs:
+            while not string.startswith(smallest):
+                smallest = smallest[:-1]
+
         return smallest
