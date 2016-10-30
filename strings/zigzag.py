@@ -22,11 +22,10 @@ def convert(string, num_rows):
 
     rows = ["" for i in range(0, num_rows)]
     down = True
-    length = len(string)
     index = 0
 
-    for i in range(0, length):
-        rows[index] += string[i]
+    for char in string:
+        rows[index] += char
         # change direction last row
         if index == num_rows - 1:
             down = False
@@ -39,4 +38,13 @@ def convert(string, num_rows):
             index -= 1
     return "".join(rows)
 
-print convert("PAYPALISHIRING", 3)
+
+def main():
+    """
+        Customary main method
+    """
+    print convert("PAYPALISHIRING", 3)
+
+
+if __name__ == '__main__':
+    main()

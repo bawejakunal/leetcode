@@ -16,3 +16,14 @@ class Solution(object):
                 chars[i] = stack.pop()
 
         return "".join(chars)
+
+
+def main():
+    """
+        main method
+    """
+    solution = Solution()
+    print solution.reverseVowels("Howels")
+
+if __name__ == '__main__':
+    main()

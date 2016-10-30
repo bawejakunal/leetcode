@@ -25,5 +25,14 @@ class Solution(object):
                     return False
         
         return True
-        
-        
+
+def main():
+    """
+        main method
+    """
+    solution = Solution()
+    print solution.canConstruct("GiveMe10Million",
+                                "GgiIvVeEMmEe10MmielLllion")
+
+if __name__ == '__main__':
+    main()
