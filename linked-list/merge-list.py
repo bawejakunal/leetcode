@@ -18,42 +18,37 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        head1 = l1
-        head2 = l2
         merged = None
-
-        if head1 is None:
-            merged = head2
-
-        elif head2 is None:
-            merged = head1
-
-        else:
-            if head1.val < head2.val:
-                merged = head1
-                head1 = head1.next
-
-            else:
-                merged = head2
-                head2 = head2.next
-
-            tail = merged
-            while head1 is not None and head2 is not None:
-                if head1.val < head2.val:
-                    tail.next = head1
-                    head1 = head1.next
-
+        current = None
+        while l1 is not None and l2 is not None:
+            if l1.val < l2.val:
+                if current is not None:
+                    current.next = l1
+                    current = current.next
                 else:
-                    tail.next = head2
-                    head2 = head2.next
+                    current = l1
+                    merged = current
+                l1 = l1.next
+            else:
+                if current is not None:
+                    current.next = l2
+                    current = current.next
+                else:
+                    current = l2
+                    merged = current
+                l2 = l2.next
 
-                tail = tail.next
+        if l1 is not None:
+            if current is None:
+                merged = l1
+            else:
+                current.next = l1
 
-            if head1 is not None:
-                tail.next = head1
-
-            elif head2 is not None:
-                tail.next = head2
+        elif l2 is not None:
+            if current is None:
+                merged = l2
+            else:
+                current.next = l2
 
         return merged
 

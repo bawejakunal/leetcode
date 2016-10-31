@@ -25,6 +25,7 @@ class Solution(object):
         head, tail = self.reverse_util(head.next, tail)
         tail.next = current
         tail = tail.next
+        tail.next = None
 
         return head, tail
 
@@ -36,9 +37,6 @@ class Solution(object):
         """
         tail = None
         head, tail = self.reverse_util(head, tail)
-        # Do not miss this else a loop at end of linked list
-        if tail is not None:
-            tail.next = None
 
         return head
 
