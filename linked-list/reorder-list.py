@@ -23,18 +23,19 @@ class Solution(object):
             
         # find the mid point
         slow = fast = head 
-        while fast and fast.next:
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
 
         # reverse the second half in-place
-        pre, node = None, slow
-        while node:
-            pre, node.next, node = node, pre, node.next
+        prev, node = None, slow
+        while node is not None:
+            prev, node.next, node = node, prev, node.next
         
-        # Merge in-place; Note : the last node of "first" and "second" are the same
-        first, second = head, pre
-        while second.next:
+        # Merge in-place
+        # Note : the last node of "first" and "second" are the same
+        first, second = head, prev
+        while second.next is not None:
             first.next, first = second, first.next
             second.next, second = first, second.next
         return 

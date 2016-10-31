@@ -18,18 +18,14 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if head is None:
-            return head
-
         current = None
-        while head.next is not None:
+        while head is not None:
             temp = head.next
             head.next = current
             current = head
             head = temp
-        head.next = current
 
-        return head
+        return current
 
 def printlist(head):
     """
