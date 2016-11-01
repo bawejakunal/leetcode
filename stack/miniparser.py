@@ -21,44 +21,32 @@ class Solution(object):
         :type s: str
         :rtype: NestedInteger
         """
-        stack = list(string)
-        current = None
-        prev = None
+        stack = list()
+        token = str()
 
-        # remove ']' from end
-        while len(stack) and stack[-1] == ']':
-            stack.pop()
+        for char in string:
+            if char == '[':
+                # stack.append(NestedInteger())
+                stack.append(list())
 
-        while len(stack) > 0:
-            prev = current
-            current = str()
+            elif char == ']' or char == ',':
+                if len(token) > 0:
+                    # stack[-1].add(NestedInteger(int(token)))
+                    stack[-1].append(int(token))
+                    token = str()
 
-            while len(stack) > 0 and stack[-1] != '[':
-                current = stack.pop() + current
-
-            # discard '['
-            if len(stack) >0 and stack[-1] == '[':
-                stack.pop() # pop '['
-                
-            if len(stack) > 0 and stack[-1] == ',':
-                stack.pop() # pop ','
-
-            try:
-                current = int(current)
-            except ValueError:
-                # empty NestedInteger passed
-                current = None
-
-            if current is None:
-                # empty NestedInteger passed
-                current = list()
+                if char == ']':
+                    top = stack.pop()
+                    if len(stack) > 0:
+                        # stack[-1].add(top)
+                        stack[-1].append(top)
+                    else:
+                        return top
             else:
-                current = [current]
+                token += char
 
-            if prev is not None:
-                current.append(prev)
-
-        return current
+        if len(token) > 0:
+            return int(token)
 
 def main():
     """
@@ -68,7 +56,7 @@ def main():
     """
     solution = Solution()
 
-    print solution.deserialize("[-1]")
+    print solution.deserialize("[-1,[3,2]]")
     print solution.deserialize("324")
     print solution.deserialize("[[]]")
     print solution.deserialize("[123,[456,[789]]]")
