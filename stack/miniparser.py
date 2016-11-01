@@ -37,10 +37,10 @@ class Solution(object):
                 current = stack.pop() + current
 
             # discard '['
-            if len(stack) > 0:
+            if len(stack) >0 and stack[-1] == '[':
                 stack.pop() # pop '['
                 
-            if len(stack) > 0:
+            if len(stack) > 0 and stack[-1] == ',':
                 stack.pop() # pop ','
 
             try:
@@ -48,7 +48,6 @@ class Solution(object):
             except ValueError:
                 # empty NestedInteger passed
                 current = None
-
 
             if current is None:
                 # empty NestedInteger passed
@@ -68,8 +67,10 @@ def main():
         so demo via lists
     """
     solution = Solution()
+
+    print solution.deserialize("[-1]")
     print solution.deserialize("324")
-    print solution.deserialize("[]")
+    print solution.deserialize("[[]]")
     print solution.deserialize("[123,[456,[789]]]")
 
 if __name__ == '__main__':
