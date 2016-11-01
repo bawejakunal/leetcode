@@ -37,8 +37,8 @@ class Solution(object):
                 while index < length - 1 and number[index] <= number[index+1]:
                     index += 1
                 del number[index]
-                if index > 0:
                 # compare previous digit with new digit
+                if index > 0:
                     index -= 1
                 k -= 1
 
