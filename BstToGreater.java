@@ -11,8 +11,8 @@
  */
 public class Solution {
     public TreeNode convertBST(TreeNode root) {
-        if(root == null) return null;
-        DFS(root, 0);
+        if(root != null)
+            DFS(root, 0);
         return root;
     }
     
