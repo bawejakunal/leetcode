@@ -1,5 +1,7 @@
 # https://leetcode.com/problems/perfect-number
 
+import math
+
 class Solution(object):
     def checkPerfectNumber(self, num):
         """
