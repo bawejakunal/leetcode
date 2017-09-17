@@ -25,8 +25,8 @@ class Solution {
 class Tuple {
     Integer val;
     Integer freq;
-    Tuple(Character ch, Integer freq) {
-        this.ch = ch;
+    Tuple(Integer val, Integer freq) {
+        this.val = val;
         this.freq = freq;
     }
 }
