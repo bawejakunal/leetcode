@@ -1,16 +1,21 @@
-// https://leetcode.com/problems/longest-continuous-increasing-subsequence/description/
+// https://leetcode.com/problems/longest-increasing-subsequence/description/
 
 class Solution {
-    public int findLengthOfLCIS(int[] nums) {
-        int longest = 0, current = 0;
-        for (int i = 0; i <nums.length ; i++) {
-            if (i == 0 || nums[i] > nums[i-1])
-                current++;
-            else {
-                longest = Math.max(current, longest);
-                current = 1;
+    public int lengthOfLIS(int[] nums) {
+        if (nums == null || nums.length < 1)
+            return 0;
+        int lens[] = new int[nums.length];
+        Arrays.fill(lens, 0);
+        int maxlen = 0;
+        for (int num: nums) {
+            int idx = Arrays.binarySearch(lens, 0, maxlen, num);
+            if (idx < 0) {
+                idx = -(idx + 1);
             }
+            lens[idx] = num;
+            if (idx == maxlen)
+                maxlen++;
         }
-        return Math.max(longest, current);
+        return maxlen;
     }
 }
