@@ -5,7 +5,7 @@ public class Solution {
         int i = 1;
         while (num > 0) {
             num -= i;
-            i += 2; // difference of two consecutive integer's squares increments by 2
+            i += 2; // sum of odd numbers is a perfect square
         }
         return num == 0;
     }
